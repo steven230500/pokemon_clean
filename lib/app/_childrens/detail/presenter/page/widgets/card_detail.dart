@@ -58,8 +58,9 @@ class CardDetailPokemon extends StatelessWidget {
               ),
               child: Center(
                 child: PockeText.body(
-                    label: 'Agregar a favoritos'.toUpperCase(),
-                    color: PockeColors.white),
+                  label: 'Agregar a favoritos'.toUpperCase(),
+                  color: PockeColors.white,
+                ),
               ),
             ),
           )
@@ -86,17 +87,19 @@ class TextRich extends StatelessWidget {
           TextSpan(
             text: identifier,
             style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: PockeColors.black,
-                fontSize: PocketTypography.body,
-                fontFamily: PocketTypography.segoe),
+              fontWeight: FontWeight.bold,
+              color: PockeColors.black,
+              fontSize: PocketTypography.body,
+              fontFamily: PocketTypography.segoe,
+            ),
           ),
           TextSpan(
             text: value,
             style: const TextStyle(
-                color: PockeColors.black,
-                fontSize: PocketTypography.body,
-                fontFamily: PocketTypography.segoe),
+              color: PockeColors.black,
+              fontSize: PocketTypography.body,
+              fontFamily: PocketTypography.segoe,
+            ),
           ),
         ],
       ),

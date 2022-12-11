@@ -47,9 +47,12 @@ class PokeListRepositoryImpl implements PokeListRepository {
       );
 
       List<Model> result = [];
-      result.add(Model(
+      result.add(
+        Model(
           name: response.data['name'],
-          url: 'https://pokeapi.co/api/v2/pokemon/$word'));
+          url: 'https://pokeapi.co/api/v2/pokemon/$word',
+        ),
+      );
       return Right(result);
     } on ServerException catch (e) {
       return Left(

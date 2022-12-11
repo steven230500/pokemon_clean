@@ -17,7 +17,9 @@ class PokeListBloc extends Bloc<PokeListEvent, PokeListState> {
   String? pokeWord;
 
   void _onGetLimitPokemon(
-      PokeListStarted event, Emitter<PokeListState> emit) async {
+    PokeListStarted event,
+    Emitter<PokeListState> emit,
+  ) async {
     emit(PokeListLoading());
 
     try {
@@ -35,7 +37,9 @@ class PokeListBloc extends Bloc<PokeListEvent, PokeListState> {
   }
 
   void _onGetPokemonByname(
-      PokeListSearched event, Emitter<PokeListState> emit) async {
+    PokeListSearched event,
+    Emitter<PokeListState> emit,
+  ) async {
     emit(PokeListLoading());
 
     try {

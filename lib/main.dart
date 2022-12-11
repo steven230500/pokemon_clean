@@ -15,10 +15,12 @@ void main() async {
   Hive.registerAdapter(TypeEntityAdapter());
   await Hive.openBox<PokemonEntity>('pokemon');
 
-  return runApp(ModularApp(
-    module: AppModule(),
-    child: const App(),
-  ));
+  return runApp(
+    ModularApp(
+      module: AppModule(),
+      child: const App(),
+    ),
+  );
 }
 
 class App extends StatelessWidget {

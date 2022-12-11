@@ -12,54 +12,58 @@ import 'package:test_pokemon/app/_childrens/home/presenter/page/home_page.dart';
 
 class AppModule extends Module {
   @override
-  List<Bind> get binds => [
-        Bind<Dio>(
-          (i) => Dio(),
+  List<Bind> get binds {
+    return [
+      Bind<Dio>(
+        (i) => Dio(),
+      ),
+      Bind<PokeListRepositoryImpl>(
+        (i) => PokeListRepositoryImpl(
+          i<Dio>(),
         ),
-        Bind<PokeListRepositoryImpl>(
-          (i) => PokeListRepositoryImpl(
-            i<Dio>(),
-          ),
+      ),
+      Bind<PokeDescriptionRepositoryImpl>(
+        (i) => PokeDescriptionRepositoryImpl(
+          i<Dio>(),
         ),
-        Bind<PokeDescriptionRepositoryImpl>(
-          (i) => PokeDescriptionRepositoryImpl(
-            i<Dio>(),
-          ),
+      ),
+      Bind<PokeListBloc>(
+        (i) => PokeListBloc(
+          i<PokeListRepositoryImpl>(),
         ),
-        Bind<PokeListBloc>(
-          (i) => PokeListBloc(
-            i<PokeListRepositoryImpl>(),
-          ),
+      ),
+      Bind<PokeDetailBloc>(
+        (i) => PokeDetailBloc(
+          i<PokeListRepositoryImpl>(),
         ),
-        Bind<PokeDetailBloc>(
-          (i) => PokeDetailBloc(
-            i<PokeListRepositoryImpl>(),
-          ),
-          isSingleton: false,
+        isSingleton: false,
+      ),
+      Bind<PokeDescriptionBloc>(
+        (i) => PokeDescriptionBloc(
+          i<PokeDescriptionRepositoryImpl>(),
         ),
-        Bind<PokeDescriptionBloc>(
-          (i) => PokeDescriptionBloc(
-            i<PokeDescriptionRepositoryImpl>(),
-          ),
-        ),
-        Bind<FavoritesBloc>(
-          (i) => FavoritesBloc(),
-        ),
-      ];
+      ),
+      Bind<FavoritesBloc>(
+        (i) => FavoritesBloc(),
+      ),
+    ];
+  }
 
   @override
-  List<ModularRoute> get routes => [
-        ChildRoute(
-          '/',
-          child: ((context, args) => const HomePage()),
-        ),
-        ChildRoute(
-          '/detail',
-          child: ((context, args) => DetailPage(pokemon: args.data)),
-        ),
-        ChildRoute(
-          '/favorite',
-          child: ((context, args) => const FavoritePage()),
-        ),
-      ];
+  List<ModularRoute> get routes {
+    return [
+      ChildRoute(
+        '/',
+        child: ((context, args) => const HomePage()),
+      ),
+      ChildRoute(
+        '/detail',
+        child: ((context, args) => DetailPage(pokemon: args.data)),
+      ),
+      ChildRoute(
+        '/favorite',
+        child: ((context, args) => const FavoritePage()),
+      ),
+    ];
+  }
 }

@@ -12,7 +12,8 @@ class PokeDescriptionRepositoryImpl implements PokeDescriptionRepository {
 
   @override
   Future<Either<Failure, String>> getPokemonDescription(
-      PokemonModel pokemon) async {
+    PokemonModel pokemon,
+  ) async {
     try {
       final response = await dio.get(
         'https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}',

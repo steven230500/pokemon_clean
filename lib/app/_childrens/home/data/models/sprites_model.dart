@@ -17,11 +17,12 @@ class SpritesModel extends SpritesEntity {
 
   factory SpritesModel.fromJson(Map<String, dynamic> json) {
     return SpritesModel(
-        backDefault: json['back_default'] ?? '',
-        backFemale: json['back_female'] ?? '',
-        backShiny: json['back_shiny'] ?? '',
-        frontDefault: json['front_default'] ?? '',
-        frontFemale: json['front_female'] ?? '');
+      backDefault: json['back_default'] ?? '',
+      backFemale: json['back_female'] ?? '',
+      backShiny: json['back_shiny'] ?? '',
+      frontDefault: json['front_default'] ?? '',
+      frontFemale: json['front_female'] ?? '',
+    );
   }
 
   Map<String, dynamic> toMap() {

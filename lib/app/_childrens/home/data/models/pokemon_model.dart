@@ -45,8 +45,8 @@ class PokemonModel extends PokemonEntity {
       order: json['order'] ?? 0,
       height: json['height'] ?? 0,
       weight: json['weight'] ?? 0,
-      types: (json['types'] as List<dynamic>)
-          .map((e) => TypeModel.fromJson(e['type'] as Map<String, dynamic>))
+      types: (json['types'] as List)
+          .map((e) => TypeModel.fromJson(e['type']))
           .toList(),
       sprites: SpritesModel.fromJson(json['sprites'] ?? {}),
       description: json['flavor_text'] ?? '',

@@ -9,12 +9,16 @@ class PokeCard extends StatelessWidget {
       builder: (context, state) {
         if (state is PokeDetailLoading || state is PokeDetailInitial) {
           return const SizedBox(
-              width: 5, height: 5, child: CircularProgressIndicator());
+            width: 5,
+            height: 5,
+            child: CircularProgressIndicator(),
+          );
         }
         if (state is PokeDetailLoad) {
-          return GestureDetector(
-            onTap: () =>
-                Modular.to.pushNamed('/detail', arguments: state.pokemon),
+          return InkWell(
+            onTap: () {
+              Modular.to.pushNamed('/detail', arguments: state.pokemon);
+            },
             child: Container(
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
@@ -25,24 +29,27 @@ class PokeCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Align(
-                      alignment: Alignment.centerRight,
-                      child: GestureDetector(
-                        onTap: () {
-                          BlocProvider.of<PokeDetailBloc>(context).add(
-                              PokeDetailSelectedFavorite(
-                                  pokemon: state.pokemon as PokemonModel));
-                          Modular.get<FavoritesBloc>()
-                              .add(const FavoritesStarted());
-                        },
-                        child: state.pokemon.favorite
-                            ? const SvgIcon(
-                                UiValues.heartFilledSvg,
-                                color: PockeColors.btnColor,
-                              )
-                            : const SvgIcon(
-                                UiValues.heartSvg,
-                              ),
-                      )),
+                    alignment: Alignment.centerRight,
+                    child: GestureDetector(
+                      onTap: () {
+                        BlocProvider.of<PokeDetailBloc>(context).add(
+                          PokeDetailSelectedFavorite(
+                            pokemon: state.pokemon as PokemonModel,
+                          ),
+                        );
+                        Modular.get<FavoritesBloc>()
+                            .add(const FavoritesStarted());
+                      },
+                      child: state.pokemon.favorite
+                          ? const SvgIcon(
+                              UiValues.heartFilledSvg,
+                              color: PockeColors.btnColor,
+                            )
+                          : const SvgIcon(
+                              UiValues.heartSvg,
+                            ),
+                    ),
+                  ),
                   Image.network(
                     state.pokemon.sprites.frontDefault,
                     scale: 0.8,

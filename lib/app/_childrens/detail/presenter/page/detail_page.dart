@@ -53,8 +53,9 @@ class _View extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: IconButton(
-                        onPressed: () => Modular.to.popUntil((_) => false),
-                        icon: const Icon(Icons.arrow_back)),
+                      onPressed: () => Modular.to.popUntil((_) => false),
+                      icon: const Icon(Icons.arrow_back),
+                    ),
                   ),
                   Align(
                     alignment: Alignment.center,

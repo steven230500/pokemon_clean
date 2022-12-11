@@ -12,8 +12,9 @@ class SearchPockeWidget extends StatelessWidget {
             style: const TextStyle(fontSize: PocketTypography.body),
             decoration: InputDecoration(
               border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(15.0)),
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(15.0),
+              ),
               hintText: 'Busca un pokemon',
               filled: true,
               fillColor: Colors.white,
@@ -23,33 +24,42 @@ class SearchPockeWidget extends StatelessWidget {
             },
           ),
         ),
-        const SizedBox(
-          width: 15,
-        ),
+        const SizedBox(width: 15),
         TextButton(
-            style: ButtonStyle(
-                padding: MaterialStateProperty.all(const EdgeInsets.symmetric(
-                    horizontal: 25.0, vertical: 20.0)),
-                backgroundColor:
-                    MaterialStateProperty.all(PockeColors.btnColor),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                ))),
-            onPressed: () {
-              final pokeWorkd = Modular.get<PokeListBloc>().pokeWord;
-              if (pokeWorkd == '') {
-                Modular.get<PokeListBloc>()
-                    .add(const PokeListStarted(limitPokemon: 1200));
-              } else {
-                Modular.get<PokeListBloc>().add(PokeListSearched(
-                    pokemonName: Modular.get<PokeListBloc>().pokeWord ?? ''));
-              }
-            },
-            child: PockeText.body(
-                label: 'BUSCAR',
-                color: Colors.white,
-                fontWeight: FontWeight.bold))
+          style: ButtonStyle(
+            padding: MaterialStateProperty.all(
+              const EdgeInsets.symmetric(
+                horizontal: 25.0,
+                vertical: 20.0,
+              ),
+            ),
+            backgroundColor: MaterialStateProperty.all(PockeColors.btnColor),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+            ),
+          ),
+          onPressed: () {
+            final pokeWorkd = Modular.get<PokeListBloc>().pokeWord;
+            if (pokeWorkd == '') {
+              Modular.get<PokeListBloc>().add(
+                const PokeListStarted(limitPokemon: 1200),
+              );
+            } else {
+              Modular.get<PokeListBloc>().add(
+                PokeListSearched(
+                  pokemonName: Modular.get<PokeListBloc>().pokeWord ?? '',
+                ),
+              );
+            }
+          },
+          child: PockeText.body(
+            label: 'BUSCAR',
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        )
       ],
     );
   }

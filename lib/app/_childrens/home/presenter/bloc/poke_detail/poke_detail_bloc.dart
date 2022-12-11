@@ -19,7 +19,9 @@ class PokeDetailBloc extends Bloc<PokeDetailEvent, PokeDetailState> {
   final PokeListRepository _repository;
 
   void _onGetPokemonByUrl(
-      PokeDetailStarted event, Emitter<PokeDetailState> emit) async {
+    PokeDetailStarted event,
+    Emitter<PokeDetailState> emit,
+  ) async {
     emit(PokeDetailInitial());
 
     try {
@@ -47,7 +49,9 @@ class PokeDetailBloc extends Bloc<PokeDetailEvent, PokeDetailState> {
   }
 
   void _onFavoriteSelect(
-      PokeDetailSelectedFavorite event, Emitter<PokeDetailState> emit) async {
+    PokeDetailSelectedFavorite event,
+    Emitter<PokeDetailState> emit,
+  ) async {
     emit(PokeDetailInitial());
 
     try {

@@ -56,8 +56,9 @@ class _View extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.all(8.0),
                           decoration: const BoxDecoration(
-                              color: PockeColors.btnColor,
-                              shape: BoxShape.circle),
+                            color: PockeColors.btnColor,
+                            shape: BoxShape.circle,
+                          ),
                           child: PockeText.small(
                             label: state.pokemon.length.toString(),
                             color: PockeColors.white,

@@ -14,7 +14,9 @@ class PokeDescriptionBloc
   final PokeDescriptionRepository _repository;
 
   void _onGetPokemonDescription(
-      PokeDescriptionStarted event, Emitter<PokeDescriptionState> emit) async {
+    PokeDescriptionStarted event,
+    Emitter<PokeDescriptionState> emit,
+  ) async {
     emit(PokeDescriptionInitial());
 
     try {
@@ -26,7 +28,8 @@ class PokeDescriptionBloc
         (r) {
           emit(
             PokeDescriptionLoad(
-                event.pokemon.copyWith(description: r.replaceAll('\n', ' '))),
+              event.pokemon.copyWith(description: r.replaceAll('\n', ' ')),
+            ),
           );
         },
       );

@@ -12,12 +12,13 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     on<FavoritesStarted>(_onGetPokemonByFavorites);
   }
   void _onGetPokemonByFavorites(
-      FavoritesStarted event, Emitter<FavoritesState> emit) async {
+    FavoritesStarted event,
+    Emitter<FavoritesState> emit,
+  ) async {
     emit(FavoritesInitial());
 
     final pokemonsBox = Hive.box<PokemonEntity>('pokemon');
     final listPokemon = pokemonsBox.values.toList();
-    final listPokemonOrderById = pokemonsBox.values.toList();
 
     emit(FavoritesLoading());
 
